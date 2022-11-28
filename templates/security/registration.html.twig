@@ -1,0 +1,22 @@
+{% extends "base_security_admin.html.twig" %}
+{% form_theme userForm 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+<h1> Inscription </h1>
+
+{{ form_start(userForm) }}
+
+{{ form_row(userForm.name, {'label': 'Nom'}) }}
+{{ form_row(userForm.email, {'label': 'Email'}) }}
+{{ form_row(userForm.password, {'label': 'Mot de passe'}) }}
+{{ form_row(userForm.confirmPassword, {'label': 'Confirmation du mot de passe'}) }}
+<div class="error alert alert-danger mt-1"></div>
+{{ form_row(userForm.submit, { 'label':'Inscription', 'attr':{'class':'btn btn-primary mt-2 disabled'}} ) }}
+
+{{ form_end(userForm) }}
+</div>
+
+ {% endblock %}
+
