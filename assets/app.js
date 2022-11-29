@@ -11,6 +11,8 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
+import { displayFile } from './displayFile.js'
+
 // handle registration confirm Password
 if(document.querySelector('#user_confirmPassword')) {
     const alert = document.querySelector('.error');
@@ -31,4 +33,7 @@ if(document.querySelector('#user_confirmPassword')) {
             alert.innerHTML=""
         }
     })
+}
+if(document.getElementById('project_image')) {
+    displayFile('project_image', true)
 }

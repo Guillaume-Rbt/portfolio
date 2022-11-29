@@ -1,0 +1,39 @@
+{% extends "base_security_admin.html.twig" %}
+{% block title %}Ajouter/modifier projet{% endblock %}
+{% form_theme projectForm 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+	{% include "partials/navbar_admin.html.twig" %}
+
+	<div class="container">
+    {% if editMode %}
+		<h1>Modification du projet</h1>
+        {% else %}
+           <h1>Ajouter un projet</h1> 
+           {% endif %}
+		{{ form_start(projectForm) }}
+
+		{{ form_row(projectForm.name, {"label":"Nom du projet"}) }}
+
+		{% if project.image %}
+			{{ form_row(projectForm.image, {"label":"Image du projet", 'attr':{'data-file': project.image },'required':false}) }}
+			<div class="preview" id="preview-project_image"><img src="{{ asset("uploads/images/" ~ project.image) }} "/>
+			</div>
+		{% else %}
+			{{ form_row(projectForm.image, {"label":"Image du projet", 'attr':{'data-file': project.image } , 'required' :true}) }}
+			<div class="preview" id="preview-project_image"/>
+		</div>
+	{% endif %}
+	{{ form_row(projectForm.description, {"label":"Description"} ) }}
+	{{ form_row(projectForm.technology, {"label":"Technologies utilisées"} ) }}
+	{{ form_row(projectForm.githubLink, {"label":"Lien github"} ) }}
+	{{ form_row(projectForm.siteLink, {"label":"Nom du site"} ) }}
+	{% if editMode %}
+		{{ form_row(projectForm.submit, {"label":"Enregistrer les modifications",'attr':{ 'class':'btn btn-secondary' }}
+		) }}
+	{% else %}
+		{{ form_row(projectForm.submit, {"label":"Enregistrer",'attr':{ 'class':'btn btn-primary' }}
+		) }}
+	{% endif %}
+	{{ form_end(projectForm) }}
+{% endblock %}

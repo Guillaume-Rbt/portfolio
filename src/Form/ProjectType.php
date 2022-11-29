@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\Project;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,10 +17,14 @@ class ProjectType extends AbstractType
         $builder
             ->add('name')
             ->add('image')
+            ->add('image' , FileType::class, [
+                'mapped' => false,
+                "required" =>false
+            ])
             ->add('description')
             ->add('technology')
-            ->add('githubLink')
-            ->add('siteLink')
+            ->add('githubLink', UrlType::class)
+            ->add('siteLink', UrlType::class)
             ->add('submit', SubmitType::class)
         ;
     }

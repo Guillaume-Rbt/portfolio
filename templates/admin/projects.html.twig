@@ -1,0 +1,50 @@
+{% extends "base_security_admin.html.twig" %}
+{% block title %}Gestion des projets{% endblock %}
+{% block body %}
+
+	{% include "partials/navbar_admin.html.twig" %}
+
+	<div class="container">
+		<h1>Gestion des projets</h1>
+
+		<a class="btn btn-primary mt-2 mb-2" href={{ path('admin_add_project') }}>Ajouter un projet</a>
+
+		{% if projects is empty %}
+
+			<p>
+				Il n'y a pas de projets pour l'instant
+			</p>
+
+		{% else %}
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">N°</th>
+						<th scope="col">Titre</th>
+						<th scope="col">Image</th>
+						<th scope="col">Description</th>
+						<th scope="col">Liens</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for project in projects %}
+						<tr>
+							<th scope="row">{{ loop.index }}</th>
+							<td>{{ project.name }}</td>
+							<td> <img height="150" src="{{ asset("uploads/images/" ~ project.image) }}"</td>
+							<td>{{ project.description }}</td>
+							<td>{{ project.githubLink }}</td>
+							<td><a href="{{ path('admin_edit_project' , {'id': project.id }) }}" class="btn btn-warning">Modifier</a>
+							<a href="{{ path('admin_project_remove' , {'id': project.id }) }}" class="btn btn-danger">Supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% endif %}
+
+	</div>
+
+
+{% endblock %}
