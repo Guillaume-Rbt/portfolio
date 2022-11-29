@@ -35,5 +35,10 @@ if(document.querySelector('#user_confirmPassword')) {
     })
 }
 if(document.getElementById('project_image')) {
-    displayFile('project_image', true)
+    displayFile('project_image', true, "image")
+}
+
+if(document.getElementById('infos_photo')) {
+    displayFile('infos_photo', false, "image");
+    displayFile('infos_cv', false, "pdf")
 }

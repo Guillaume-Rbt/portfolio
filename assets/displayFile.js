@@ -1,15 +1,20 @@
-export function displayFile(elementId , displayPreview = false) {
+export function displayFile(elementId , displayPreview = false, type) {
     const preview = document.getElementById("preview-" + elementId);
     const element = document.getElementById(elementId)
     element.addEventListener("change", () => {
         var fileName = element.value;
         var filesList = element.files;
-        var imageType = /^image\//
+        var imageType = new RegExp(type , "g")
+        console.log(imageType)
+        //var imageType = /^image\//
         var file = filesList[0];
         if (!imageType.test(file.type)) {
+            if (document.getElementById("alertFile")) {
+                document.getElementById("alertFile").remove();
+            }
             var message = document.createElement("div");
             message.classList.add("alert-danger", "m-2", "p-2");
-            message.textContent = "Veuillez sélectionner une image"
+            message.textContent = `Veuillez sélectionner un fichier ${ type }`
             message.id = 'alertFile';
             message = element.parentNode.parentNode.insertBefore(message, element.parentNode);
         } else {
@@ -18,7 +23,7 @@ export function displayFile(elementId , displayPreview = false) {
             }
         }
         var parts = fileName.split("\\");
-        document.querySelector("input[type='file']+label").innerHTML = parts.pop();
+        document.querySelector("#" + elementId  + "+label").innerHTML = parts.pop();
         preview.innerHTML = "";
         if (displayPreview) {
             var img = document.createElement("img");
@@ -40,6 +45,6 @@ export function displayFile(elementId , displayPreview = false) {
         console.log(element.dataset.file)
         var fileName = element.dataset.file;
         var parts = fileName.split("\\");
-        document.querySelector("input[type='file']+label").innerHTML = parts.pop();
+        document.querySelector("#" + elementId + "+label").innerHTML = parts.pop();
     }
 }

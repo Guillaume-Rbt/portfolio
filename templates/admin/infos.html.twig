@@ -1,0 +1,35 @@
+{% extends "base_security_admin.html.twig" %}
+{% block title %}Informations personnelles
+{% endblock %}
+{% form_theme infosForm 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+	{% include "partials/navbar_admin.html.twig" %}
+
+	<div class="container">
+		<h1>Informations personnelles</h1>
+		{{ form_start(infosForm) }}
+
+		{{ form_row(infosForm.name, {'label':'Prénom'}) }}
+		{{ form_row(infosForm.lastname, {'label':'Nom'}) }}
+		{{ form_row(infosForm.birth, {'label':'Date de naissance'}) }}
+		{{ form_row(infosForm.description, {'label':'Description'}) }}
+		{% if infos.photo %}
+			{{ form_row(infosForm.photo, {'label':'Photo', 'required':false, 'attr':{ 'data-file':  infos.photo } }) }}
+		{% else %}
+			{{ form_row(infosForm.photo, {'label':'Photo', 'required':true }) }}
+		{% endif %}
+		{% if infos.cv %}
+			{{ form_row(infosForm.cv, {'label':'Currivulum Vitae', 'required':false, 'attr':{ 'data-file': infos.cv }}) }}
+		{% else %}
+			{{ form_row(infosForm.cv, {'label':'Currivulum Vitae', 'required':true}) }}
+		{% endif %}
+		{{ form_row(infosForm.linkedinLink, {'label':'Lien linkedin'}) }}
+		{{ form_row(infosForm.githubLink, {'label':'Lien github'}) }}
+		{{ form_row(infosForm.submit, {'label':'Enregistrer'}) }}
+
+		{{ form_end(infosForm) }}
+	</div>
+
+
+{% endblock %}

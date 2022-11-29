@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Infos;
 use App\Entity\Project;
+use App\Form\InfosType;
 use App\Form\ProjectType;
+use App\Repository\InfosRepository;
 use App\Repository\ProjectRepository;
 use App\Service\UploadService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -73,4 +76,71 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('admin_projects');
     }
+
+    #[Route('/infos/new' , name:'infos_add' )]
+    #[Route('/infos/{id}/edit' , name:'infos_edit' )]
+    public function infos(Infos $infos = null, EntityManagerInterface $manager, InfosRepository $repo, Request $request, SluggerInterface $slugger)
+    {
+        if (!$infos) {
+            if ($repo->findAll() === []) {
+                $infos = new infos();
+            } else {
+                return $this->redirectToRoute('admin_infos_edit', ['id' => 1]);
+            }
+        }
+
+        $form = $this->createForm(InfosType::class, $infos);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) 
+        {
+            if($form->get('photo')->getData() !== null) {
+                if($infos->getId() !== null) {
+                  unlink($this->getParameter('images_directory') .  '/' . $infos->getPhoto() );
+                }
+
+                $photo = $form->get('photo')->getData();
+
+                if (in_array($photo->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
+                    $uploader = new UploadService($slugger, $this->getParameter('images_directory'));
+                    $photoName = $uploader->upload($photo);
+                    $infos->setPhoto($photoName);
+                } else {
+                    $this->addFlash('error' , 'Format de photo png et jpeg uniquement');
+                    return $this->redirectToRoute('admin_infos_edit', [
+                        'id' => 1
+                    ]);
+                }
+
+            }
+            if($form->get('cv')->getData() !== null) {
+                if($infos->getId() !== null) {
+                    unlink($this->getParameter('files_directory') .  '/' . $infos->getCV() );
+                  }
+                  $cv = $form->get('cv')->getData();
+
+                  if(in_array($cv->guessExtension(), ["pdf" , "PDF"] )) {
+                    $uploader = new UploadService($slugger, $this->getParameter('files_directory'));
+                    $cvName = $uploader->upload($cv);
+                    $infos->setCV($cvName);
+                } else {
+                    $this->addFlash('error' , 'Format de CV pdf uniquement');
+                    return $this->redirectToRoute('admin_infos_edit', [
+                        'id' => 1
+                    ]);
+                }
+          }
+
+          $manager->persist($infos);
+          $manager->flush();
+        }
+
+
+        return $this->render('admin/infos.html.twig', [
+            "infosForm" => $form->createView(),
+            "infos" => $infos
+        ]);
+
+    }
+
 }
