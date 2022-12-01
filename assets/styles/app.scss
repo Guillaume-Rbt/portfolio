@@ -1,0 +1,26 @@
+/*******************\
+    $variables
+\*******************/
+$font: Rubik;
+$dark: #1e1e1e;
+$white: #fafafa;
+$yellow: #cbce18;
+
+/*******************\
+    $base
+\*******************/
+
+@import './scss/base/base';
+
+/*******************\
+    $layout
+\*******************/
+
+@import './scss/layout/section-layout';
+
+/*******************\
+    $modules
+\*******************/
+@import './scss/modules/header';
+@import './scss/modules/animated-cube-background';
+@import './scss/modules/banner'

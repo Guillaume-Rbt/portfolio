@@ -56,6 +56,8 @@ Encore
         config.corejs = '3.23';
     })
 
+    .addStyleEntry('admin' , './assets/styles/admin.css')
+
     // enables Sass/SCSS support
     //.enableSassLoader()
 

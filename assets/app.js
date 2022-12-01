@@ -42,3 +42,18 @@ if(document.getElementById('infos_photo')) {
     displayFile('infos_photo', false, "image");
     displayFile('infos_cv', false, "pdf")
 }
+
+
+//opacity header according scroll
+if(document.querySelector('.header')) {
+    window.addEventListener("scroll", ()=> {
+    if(window.scrollY > 200) {
+        document.querySelector('.header').style.background="#1e1e1ef4";
+    }
+    else {
+        document.querySelector('.header').style.background="#1e1e1e00";
+    }
+})
+
+}
+

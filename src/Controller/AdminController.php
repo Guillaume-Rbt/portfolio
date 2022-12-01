@@ -19,6 +19,13 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/admin', 'admin_')]
 class AdminController extends AbstractController
 {
+    #[Route('/', name: 'home')]
+    public function homeAdmin () : Response
+    {
+        return $this->render('admin/index.html.twig');
+    }
+
+
     #[Route('/projects', name: 'projects')]
     public function projects(ProjectRepository $repo): Response
     {
@@ -43,19 +50,18 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             if ($form->get('image')->getData() !== null) {
                 if ($project->getId() !== null) {
                     unlink($this->getParameter('images_directory') . '/' . $project->getImage());
                 }
                 $image = $form->get('image')->getData();
-                
+
                 if (in_array($image->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
                     $uploader = new UploadService($slugger, $this->getParameter('images_directory'));
                     $imageName = $uploader->upload($image);
                     $project->setImage($imageName);
                 }
-                
             }
             $manager->persist($project);
             $manager->flush();
@@ -68,8 +74,9 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/project/remove/{id}' , name:'project_remove' )]
-    public function removeProject (Project $project, EntityManagerInterface $manager) {
+    #[Route('/project/remove/{id}', name: 'project_remove')]
+    public function removeProject(Project $project, EntityManagerInterface $manager)
+    {
         unlink($this->getParameter('images_directory') . '/' . $project->getImage());
         $manager->remove($project);
         $manager->flush();
@@ -77,8 +84,8 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_projects');
     }
 
-    #[Route('/infos/new' , name:'infos_add' )]
-    #[Route('/infos/{id}/edit' , name:'infos_edit' )]
+    #[Route('/infos/new', name: 'infos_add')]
+    #[Route('/infos/{id}/edit', name: 'infos_edit')]
     public function infos(Infos $infos = null, EntityManagerInterface $manager, InfosRepository $repo, Request $request, SluggerInterface $slugger)
     {
         if (!$infos) {
@@ -92,47 +99,44 @@ class AdminController extends AbstractController
         $form = $this->createForm(InfosType::class, $infos);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) 
-        {
-            if($form->get('photo')->getData() !== null) {
-                if($infos->getId() !== null) {
-                  unlink($this->getParameter('images_directory') .  '/' . $infos->getPhoto() );
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($infos->getId() !== null) {
+                if ($form->get('photo')->getData() !== null) {
+                    unlink($this->getParameter('images_directory') .  '/' . $infos->getPhoto());
+                    $photo = $form->get('photo')->getData();
+                    if (in_array($photo->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
+                        $uploader = new UploadService($slugger, $this->getParameter('images_directory'));
+                        $photoName = $uploader->upload($photo);
+                        $infos->setPhoto($photoName);
+                    } else {
+                        $this->addFlash('error', 'Format de photo png et jpeg uniquement');
+                        return $this->redirectToRoute('admin_infos_edit', [
+                            'id' => 1
+                        ]);
+                    }
                 }
+                if ($form->get('cv')->getData() !== null) {
+                    unlink($this->getParameter('files_directory') .  '/' . $infos->getCV());
+                    $cv = $form->get('cv')->getData();
 
-                $photo = $form->get('photo')->getData();
-
-                if (in_array($photo->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
-                    $uploader = new UploadService($slugger, $this->getParameter('images_directory'));
-                    $photoName = $uploader->upload($photo);
-                    $infos->setPhoto($photoName);
-                } else {
-                    $this->addFlash('error' , 'Format de photo png et jpeg uniquement');
-                    return $this->redirectToRoute('admin_infos_edit', [
-                        'id' => 1
-                    ]);
-                }
-
-            }
-            if($form->get('cv')->getData() !== null) {
-                if($infos->getId() !== null) {
-                    unlink($this->getParameter('files_directory') .  '/' . $infos->getCV() );
-                  }
-                  $cv = $form->get('cv')->getData();
-
-                  if(in_array($cv->guessExtension(), ["pdf" , "PDF"] )) {
+                if (in_array($cv->guessExtension(), ["pdf", "PDF"])) {
                     $uploader = new UploadService($slugger, $this->getParameter('files_directory'));
                     $cvName = $uploader->upload($cv);
                     $infos->setCV($cvName);
                 } else {
-                    $this->addFlash('error' , 'Format de CV pdf uniquement');
+                    $this->addFlash('error', 'Format de CV pdf uniquement');
                     return $this->redirectToRoute('admin_infos_edit', [
                         'id' => 1
                     ]);
                 }
-          }
+                }
+                
+            }
 
-          $manager->persist($infos);
-          $manager->flush();
+            $manager->persist($infos);
+            $manager->flush();
         }
 
 
@@ -140,7 +144,5 @@ class AdminController extends AbstractController
             "infosForm" => $form->createView(),
             "infos" => $infos
         ]);
-
     }
-
 }

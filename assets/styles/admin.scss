@@ -1,0 +1,27 @@
+
+/*******************\
+
+Variables
+
+\*******************/
+$dark: #232323;
+$white: #fafafa;
+$yellow: #cbce18;
+
+
+@import './scss/modules/animated-cube-background_fixed';
+
+@mixin height-container() {
+    height: 100vh;
+    padding: 0 !important;
+    margin:auto !important;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    justify-content: center;
+  }
+  
+
+  .height-container {
+    @include height-container();
+  }
