@@ -1,28 +1,143 @@
 {% extends 'base.html.twig' %}
-{% block title %}Guillaume Robert | portfolio{% endblock %}
+{% block title %}Guillaume Robert | portfolio
+{% endblock %}
 
 {% block body %}
-{% include "partials/header.html.twig" %}
+	{% include "partials/header.html.twig" %}
 
-<section class="section banner">
-<ul class="background">
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-</ul>
+	<div class="site-content">
+		<section class="banner">
+			<div class="overflow-background"></div>
+			<div class="banner-img_container">
+				<img class='banner-img' src="{{ asset('assets/img/photo_portfolio2.png')}}" alt="">
+			</div>
+			<div class="banner-text">
+				<h1>{{ infos.name }}
+					{{ infos.lastname }}</h1>
+				<p>Web designer / Développeur Front-end</p>
+			</div>
+		</section>
 
-<img src="{{ asset('assets/img/photo_portfolio.png')}}" alt="">
+		<section class="section" id="about">
+			<div class="section-text">
+				<h2>À propos de moi</h2>
+				{{ infos.description | raw }}
+			</div>
+			<div class="section-image_right">
+				<img src="{{ asset('uploads/images/' ~ infos.photo) }}" alt="photo Guillaume">
+			</div>
+		</section>
 
-</section>
+		<section id="skills" class="section">
+			<div class="section-text">
+				<h2>Mes compétences</h2>
+				<p>Je suis capable de créer et d'intégrer les maquettes de sites web en assurant le responsive design afin que l'interface soit adaptée à tous les supports de navigation internet en utilisant les technologies et les outils adéquats.</p>
+				<p>J'assure également l'adaptation et la création des éléments visuels qui composent le site (logos, vidéos, images, illustrations) afin qu'ils s'insètrent au mieux dans le style graphique général. J'ai également la possibilité d'effectuer le traitement sonore des vidéos et autres médias audio en cas de besoin grâce à mon savoir faire acquis avec mon activité musicale.
+				</p>
+			</div>
+			<div class="skills-container">
 
-<section class="section"></section>
+				<div class="skills-row">
+					<div class="skills-row_group">
+						<p>HTML</p>
+						<span></span>
+						<p>Illustrator</p>
+						<span></span>
+						<p>JavaScript</p>
+						<span></span>
+						<p>SCSS</p>
+						<span></span>
+					</div>
+
+					<div class="skills-row_group">
+						<p>HTML</p>
+						<span></span>
+						<p>Illustrator</p>
+						<span></span>
+						<p>JavaScript</p>
+						<span></span>
+						<p>SCSS</p>
+						<span></span>
+					</div>
+				</div>
+
+				<div class="skills-row">
+					<div class="skills-row_group">
+						<p>PHP</p>
+						<span></span>
+						<p>InDesign</p>
+						<span></span>
+						<p>Figma</p>
+						<span></span>
+						<p>Bootstrap</p>
+						<span></span>
+					</div>
+					<div class="skills-row_group">
+						<p>PHP</p>
+						<span></span>
+						<p>InDesign</p>
+						<span></span>
+						<p>Figma</p>
+						<span></span>
+						<p>Bootstrap</p>
+						<span></span>
+					</div>
+				</div>
+
+				<div class="skills-row">
+					<div class="skills-row_group">
+						<p>Photoshop</p>
+						<span></span>
+						<p>VueJS</p>
+						<span></span>
+						<p>Symfony</p>
+						<span></span>
+						<p>Git</p>
+						<span></span>
+					</div>
+					<div class="skills-row_group">
+						<p>Photoshop</p>
+						<span></span>
+						<p>VueJS</p>
+						<span></span>
+						<p>Symfony</p>
+						<span></span>
+						<p>Git</p>
+						<span></span>
+					</div>
+				</div>
+
+				<div class="skills-row">
+					<div class="skills-row_group">
+						<p>Wordpress</p>
+						<span></span>
+						<p>Joomla</p>
+						<span></span>
+						<p>CSS</p>
+						<span></span>
+						<p>Webpack</p>
+						<span></span>
+						<p>TypeScript</p>
+						<span></span>
+					</div>
+					<div class="skills-row_group">
+						<p>Wordpress</p>
+						<span></span>
+						<p>Joomla</p>
+						<span></span>
+						<p>CSS</p>
+						<span></span>
+						<p>Webpack</p>
+						<span></span>
+						<p>TypeScript</p>
+						<span></span>
+					</div>
+				</div>
+
+
+			</div>
+		</section>
+	</div>
+
 
 {% endblock %}

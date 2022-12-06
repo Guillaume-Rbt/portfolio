@@ -6,7 +6,7 @@
     align-items: center;
     padding: 0 20px 0 20px;
     background: rgba($dark , 0);
-    position: sticky;
+    position: fixed;
     top:0;
     transition: all 0.3s ease;
     z-index: 999;
@@ -24,7 +24,7 @@
 }
 
 .navbar {
-    width:45%;
+    width:450px;
 }
 
 .navbar-nav {

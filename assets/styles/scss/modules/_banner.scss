@@ -1,7 +1,51 @@
-.banner {
-    height: calc(100vh - 100px) !important;
+@use "./_mixins_background.scss" as mb;
 
-    & img {
-        
+
+.banner {
+    @include mb.backgroundCircle;
+    height: calc(100vh - 100px) !important;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+
+.banner-img_container {
+    height: 90%;
+    align-self: flex-end;
+    position: relative;
+
+    & .banner-img {
+        height: 100%;
     }
+
+    &::before {
+        content: "";
+        height:100%;
+        width:100%;
+        position:absolute;
+        top:0;
+        left: 0;
+        background:linear-gradient(to top, #171717 0%, #171717 5%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 100%);
+    }
+}
+
+
+.banner-text {
+    width: clamp(300px, 55%, 500px);
+
+    & h1 {
+        font-size: 2.5em;
+        text-transform: uppercase;
+    }
+}
+
+.overflow-background {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh + 100px);
+    background: radial-gradient(circle at 0% 0%, rgb(76, 76, 76) 0%, $dark 41%, $dark 100%);
+    z-index: -1;
 }

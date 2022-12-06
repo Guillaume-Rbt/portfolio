@@ -2,7 +2,7 @@
     $variables
 \*******************/
 $font: Rubik;
-$dark: #1e1e1e;
+$dark: #171717;
 $white: #fafafa;
 $yellow: #cbce18;
 
@@ -22,5 +22,5 @@ $yellow: #cbce18;
     $modules
 \*******************/
 @import './scss/modules/header';
-@import './scss/modules/animated-cube-background';
-@import './scss/modules/banner'
+@import './scss/modules/banner';
+@import './scss/modules/skills'

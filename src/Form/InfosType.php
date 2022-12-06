@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Infos;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,7 +18,7 @@ class InfosType extends AbstractType
             ->add('name')
             ->add('lastname')
             ->add('birth')
-            ->add('description')
+            ->add('description', CKEditorType::class )
             ->add('linkedinLink')
             ->add('photo', FileType::class, [
                 "mapped" => false

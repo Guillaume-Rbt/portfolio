@@ -46,14 +46,24 @@ if(document.getElementById('infos_photo')) {
 
 //opacity header according scroll
 if(document.querySelector('.header')) {
-    window.addEventListener("scroll", ()=> {
-    if(window.scrollY > 200) {
-        document.querySelector('.header').style.background="#1e1e1ef4";
+   
+    document.querySelector("body").addEventListener("scroll", ()=> {
+        let scroll = document.querySelector("body").scrollTop;
+    if(scroll > 200) {
+        document.querySelector('.header').style.background="#171717F3";
     }
     else {
-        document.querySelector('.header').style.background="#1e1e1e00";
+        document.querySelector('.header').style.background="#17171700";
     }
 })
 
 }
+
+
+
+
+
+
+
+
 

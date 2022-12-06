@@ -9,16 +9,22 @@ $white: #fafafa;
 $yellow: #cbce18;
 
 
-@import './scss/modules/animated-cube-background_fixed';
 
 @mixin height-container() {
+    width: 100vw !important;
     height: 100vh;
     padding: 0 !important;
     margin:auto !important;
+    max-width: unset !important;
     display: flex;
     align-items: center;
     flex-direction:column;
     justify-content: center;
+    background: $dark;
+    background-repeat: no-repeat;
+    background-image: url('./images/circle.svg'), url('./images/circle.svg'), url('./images/circle.svg'), url('./images/circle.svg') ;
+    background-size: 101px 101px, 50px 50px, 90px 90px, 70px 70px;
+    background-position: 25vw 5vh, 70vw 25vh, 60vw 80vh, 5vw 70vh;
   }
   
 
