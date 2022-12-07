@@ -12,6 +12,7 @@ import './styles/app.css';
 import './bootstrap';
 
 import { displayFile } from './displayFile.js'
+import { Parallax } from './parallax.js'
 
 // handle registration confirm Password
 if(document.querySelector('#user_confirmPassword')) {
@@ -47,8 +48,8 @@ if(document.getElementById('infos_photo')) {
 //opacity header according scroll
 if(document.querySelector('.header')) {
    
-    document.querySelector("body").addEventListener("scroll", ()=> {
-        let scroll = document.querySelector("body").scrollTop;
+    window.addEventListener("scroll", ()=> {
+        let scroll = window.scrollY;
     if(scroll > 200) {
         document.querySelector('.header').style.background="#171717F3";
     }
@@ -61,8 +62,18 @@ if(document.querySelector('.header')) {
 
 
 
+Parallax.bind()
 
 
+let linkMenu = document.querySelectorAll(".nav-link");
+
+linkMenu.forEach((link) => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+       let el =  document.querySelector(link.getAttribute("href"));
+        document.querySelector("body").scroll(0 , el.offsetTop)
+    })
+})
 
 
 

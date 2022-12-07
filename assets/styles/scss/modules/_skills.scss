@@ -1,3 +1,7 @@
+/*******************\
+    $Skills
+\*******************/
+
 .skills-container {
     width:100%;
     overflow: hidden;
@@ -12,7 +16,7 @@
             justify-content: space-around;
             width:100vw;
             & p {
-            width: min-content;
+            width: max-content;
             font-size: clamp(12px, 4vw , 64px );
             position: relative;
             line-height: 1;

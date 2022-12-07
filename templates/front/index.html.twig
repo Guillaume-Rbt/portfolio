@@ -5,11 +5,12 @@
 {% block body %}
 	{% include "partials/header.html.twig" %}
 
-	<div class="site-content">
-		<section class="banner">
+<div class="site-content">
+
+		<section data-parallax='{"y":-0.5, "variable":true}' class="banner">
 			<div class="overflow-background"></div>
 			<div class="banner-img_container">
-				<img class='banner-img' src="{{ asset('assets/img/photo_portfolio2.png')}}" alt="">
+				<img class='banner-img' src="{{ asset('assets/img/photo_portfolio3.png')}}" alt="">
 			</div>
 			<div class="banner-text">
 				<h1>{{ infos.name }}
@@ -23,8 +24,8 @@
 				<h2>À propos de moi</h2>
 				{{ infos.description | raw }}
 			</div>
-			<div class="section-image_right">
-				<img src="{{ asset('uploads/images/' ~ infos.photo) }}" alt="photo Guillaume">
+			<div data-parallax='{"y":-0.5 , "r":0.02}' class="section-image_right">
+				<img  src="{{ asset('uploads/images/' ~ infos.photo) }}" alt="photo Guillaume">
 			</div>
 		</section>
 
@@ -41,9 +42,9 @@
 					<div class="skills-row_group">
 						<p>HTML</p>
 						<span></span>
-						<p>Illustrator</p>
+						<p>Suite Adobe</p>
 						<span></span>
-						<p>JavaScript</p>
+						<p>Figma</p>
 						<span></span>
 						<p>SCSS</p>
 						<span></span>
@@ -52,9 +53,9 @@
 					<div class="skills-row_group">
 						<p>HTML</p>
 						<span></span>
-						<p>Illustrator</p>
+						<p>Suite Adobe</p>
 						<span></span>
-						<p>JavaScript</p>
+						<p>Figma</p>
 						<span></span>
 						<p>SCSS</p>
 						<span></span>
@@ -65,7 +66,7 @@
 					<div class="skills-row_group">
 						<p>PHP</p>
 						<span></span>
-						<p>InDesign</p>
+						<p>Prestashop</p>
 						<span></span>
 						<p>Figma</p>
 						<span></span>
@@ -75,7 +76,7 @@
 					<div class="skills-row_group">
 						<p>PHP</p>
 						<span></span>
-						<p>InDesign</p>
+						<p>Prestashop</p>
 						<span></span>
 						<p>Figma</p>
 						<span></span>
@@ -86,7 +87,7 @@
 
 				<div class="skills-row">
 					<div class="skills-row_group">
-						<p>Photoshop</p>
+						<p>TypeScript</p>
 						<span></span>
 						<p>VueJS</p>
 						<span></span>
@@ -96,7 +97,7 @@
 						<span></span>
 					</div>
 					<div class="skills-row_group">
-						<p>Photoshop</p>
+						<p>TypeScript</p>
 						<span></span>
 						<p>VueJS</p>
 						<span></span>
@@ -117,8 +118,6 @@
 						<span></span>
 						<p>Webpack</p>
 						<span></span>
-						<p>TypeScript</p>
-						<span></span>
 					</div>
 					<div class="skills-row_group">
 						<p>Wordpress</p>
@@ -129,15 +128,10 @@
 						<span></span>
 						<p>Webpack</p>
 						<span></span>
-						<p>TypeScript</p>
-						<span></span>
 					</div>
 				</div>
-
-
 			</div>
 		</section>
-	</div>
 
-
+</div>
 {% endblock %}

@@ -1,32 +1,48 @@
-@use "./_mixins_background.scss" as mb;
-
-
 .banner {
-    @include mb.backgroundCircle;
+    background-image:url('./images/circle.svg'), url('./images/circle.svg'), url('./images/circle.svg'), url('./images/circle-dark.svg');
+    background-repeat: no-repeat;
+    background-size: 101px 101px, 137px 137px, 65px 65px, 60px 60px;
+    background-position: 45vw calc(10vh + 15px + var(--parallaxY)), 85vw calc(45vh + 15px + var(--parallaxY)), 55vw calc(70vh + 15px + var(--parallaxY)), 75vw 50px;
     height: calc(100vh - 100px) !important;
     display: flex;
+    gap: 50px;
     justify-content: space-evenly;
     align-items: center;
     position: relative;
+
+    @media screen and (max-width:910px) {
+        align-items: flex-start;
+
+        .banner-img_container  {
+            position: absolute;
+            bottom:0;
+            width: 51%;
+            min-width: 310px;
+
+            & .banner-img {
+                width: 100%;
+            }
+        }
+        
+    }
 }
 
 .banner-img_container {
-    height: 90%;
     align-self: flex-end;
     position: relative;
 
     & .banner-img {
-        height: 100%;
+       max-height: calc(90vh - 100px);
     }
 
     &::before {
         content: "";
-        height:100%;
-        width:100%;
-        position:absolute;
-        top:0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
         left: 0;
-        background:linear-gradient(to top, #171717 0%, #171717 5%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 100%);
+        background: linear-gradient(to top, #171717 0%, #171717 5%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 100%);
     }
 }
 
@@ -45,7 +61,7 @@
     top: -100px;
     left: 0;
     width: 100%;
-    height: calc(100vh + 100px);
+    height: 100vh;
     background: radial-gradient(circle at 0% 0%, rgb(76, 76, 76) 0%, $dark 41%, $dark 100%);
     z-index: -1;
 }

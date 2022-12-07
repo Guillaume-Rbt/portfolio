@@ -21,11 +21,11 @@ body {
 body {
     color: $white;
     font-family: $font;
-    line-height: 1.75;
-    background: $dark;
-    background-size: 400vw 400vh;
-    animation: gradient 15s infinite;
-    height: 100vh;
+    background-color: $dark;
+    background: radial-gradient(circle at 0% 50%, rgb(76, 76, 76) 0%, $dark 5%, $dark 100%) no-repeat;
+    background-size: 50vw 50vh;
+    padding-top: 100px;
+    background-position:  0 50vh;
 }
 
 
@@ -35,7 +35,26 @@ a {
     text-decoration: none
 }
 
-.site-content {
+
+
+h2 {
+    padding: 0 0 20px 0 ;
     position: relative;
-    top:100px;
+    width:max-content;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+
+    &::before {
+        content: "";
+        width:(3 * $beforeH2) + px;
+        height: $beforeH2 + px ;
+        background: url('./images/threeCircles.svg');
+        background-size: 100% 100%;
+        position: absolute;
+        bottom:0;
+    } 
+}
+
+p {
+    line-height: 1.75;
 }

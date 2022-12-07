@@ -1,6 +1,0 @@
-@mixin backgroundCircle {
-    background-repeat: no-repeat;
-    background-image: url('./images/circle.svg'), url('./images/circle.svg'), url('./images/circle.svg');
-    background-size: 101px 101px, 137px 137px, 65px, 65px;
-    background-position: 45vw 10vh, 85vw 45vh, 55vw 70vh;
-}
