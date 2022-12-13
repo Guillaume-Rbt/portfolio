@@ -16,4 +16,11 @@
   background-image: url("./images/circle.svg"), url("./images/circle.svg"), url("./images/circle.svg"), url("./images/circle.svg");
   background-size: 101px 101px, 50px 50px, 90px 90px, 70px 70px;
   background-position: 25vw 5vh, 70vw 25vh, 60vw 80vh, 5vw 70vh;
+}
+
+.preview {
+  width: 300px;
+}
+.preview img {
+  width: 100%;
 }/*# sourceMappingURL=admin.css.map */

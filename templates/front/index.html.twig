@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
-{% block title %}Guillaume Robert | portfolio
+{% block title %}Guillaume Robert | Portfolio
 {% endblock %}
 
 {% block body %}
 	{% include "partials/header.html.twig" %}
 
-<div class="site-content">
+	<div class="site-content">
 
 		<section data-parallax='{"y":-0.5, "variable":true}' class="banner">
 			<div class="overflow-background"></div>
-			<div class="banner-img_container">
-				<img class='banner-img' src="{{ asset('assets/img/photo_portfolio3.png')}}" alt="">
+			<div data-observer="fade-right" class="banner-img_container">
+				<img class='banner-img' src="{{ asset('assets/img/photo_portfolio.png')}}" alt="">
 			</div>
 			<div class="banner-text">
 				<h1>{{ infos.name }}
@@ -19,119 +19,237 @@
 			</div>
 		</section>
 
-		<section class="section" id="about">
-			<div class="section-text">
+		<section class="section about" id="about">
+			<div data-observer="fade-right" class="section-text">
 				<h2>À propos de moi</h2>
+				<span>Je m'appelle
+					{{ infos.name }}, j'ai
+					{{ age }}
+					ans.</span>
 				{{ infos.description | raw }}
 			</div>
 			<div data-parallax='{"y":-0.5 , "r":0.02}' class="section-image_right">
-				<img  src="{{ asset('uploads/images/' ~ infos.photo) }}" alt="photo Guillaume">
+				<img src="{{ asset('uploads/images/' ~ infos.photo) }}" alt="photo Guillaume">
 			</div>
 		</section>
 
-		<section id="skills" class="section">
-			<div class="section-text">
+		<section id="skills" class="section skills">
+			<img class='section-image_right' src="{{ asset('assets/img/skills.svg') }}" alt="">
+			<div data-observer="fade-left" class="section-text">
 				<h2>Mes compétences</h2>
 				<p>Je suis capable de créer et d'intégrer les maquettes de sites web en assurant le responsive design afin que l'interface soit adaptée à tous les supports de navigation internet en utilisant les technologies et les outils adéquats.</p>
-				<p>J'assure également l'adaptation et la création des éléments visuels qui composent le site (logos, vidéos, images, illustrations) afin qu'ils s'insètrent au mieux dans le style graphique général. J'ai également la possibilité d'effectuer le traitement sonore des vidéos et autres médias audio en cas de besoin grâce à mon savoir faire acquis avec mon activité musicale.
+				<p>J'assure également l'adaptation et la création des éléments visuels qui composent le site (logos, vidéos, images, illustrations) afin qu'ils s'insèrent au mieux dans le style graphique général. J'ai également la possibilité d'effectuer le traitement sonore des vidéos et autres médias audio en cas de besoin grâce à mon savoir faire acquis avec mon activité musicale.
 				</p>
 			</div>
 			<div class="skills-container">
 
 				<div class="skills-row">
 					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>HTML</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Suite Adobe</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Figma</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>SCSS</p>
-						<span></span>
 					</div>
 
 					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>HTML</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Suite Adobe</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Figma</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>SCSS</p>
-						<span></span>
 					</div>
-				</div>
-
-				<div class="skills-row">
 					<div class="skills-row_group">
-						<p>PHP</p>
-						<span></span>
-						<p>Prestashop</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>HTML</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Suite Adobe</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Figma</p>
-						<span></span>
-						<p>Bootstrap</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>SCSS</p>
 					</div>
+
+
+				</div>
+
+				<div class="skills-row">
 					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>PHP</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Prestashop</p>
-						<span></span>
-						<p>Figma</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Javascript</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Bootstrap</p>
-						<span></span>
 					</div>
+					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>PHP</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Prestashop</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Javascript</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Bootstrap</p>
+					</div>
+					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>PHP</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Prestashop</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Javascript</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Bootstrap</p>
+					</div>
+
 				</div>
 
 				<div class="skills-row">
 					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>TypeScript</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>VueJS</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Symfony</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Git</p>
-						<span></span>
 					</div>
 					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>TypeScript</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>VueJS</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Symfony</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Git</p>
-						<span></span>
 					</div>
+					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>TypeScript</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>VueJS</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Symfony</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Git</p>
+					</div>
+
 				</div>
 
 				<div class="skills-row">
 					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Wordpress</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Joomla</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>CSS</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Webpack</p>
-						<span></span>
 					</div>
 					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Wordpress</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Joomla</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>CSS</p>
-						<span></span>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Webpack</p>
-						<span></span>
+					</div>
+					<div class="skills-row_group">
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Wordpress</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Joomla</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>CSS</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>Webpack</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-</div>
+		<section id="portfolio" class="section">
+			<div class="center_h2">
+				<h2>Portfolio</h2>
+			</div>
+			<div class="projects-container">
+				{% for project in projects %}
+					<a class="project-item" href="#modal-{{project.name }}"><img src="{{ asset('uploads/images/' ~ project.image) }}"/></a>
+				{% endfor %}
+			</div>
+
+			{% for project in projects %}
+				<div id="modal-{{ project.name }}" class="popup">
+					<div class="pop_projet">
+						<h2>
+							{{ project.name }}</h2>
+						<img src="{{ asset('uploads/images/' ~ project.image) }}"/>
+						<h2>Description</h2>
+						<p>
+							{{ project.description}}</p>
+						<h2>Technologies</h2>
+
+						<p>{{ project.technology }}</p>
+						<a href="#">
+							<div class="close">
+								<span class="material-symbols-rounded">
+									close
+								</span>
+							</div>
+						</a>
+						<div>
+							{% if (project.siteLink) %}
+								<a title="Voir le projet {{ project.name }} " href="{{project.siteLink}}" target="_blank">
+									<span class="material-symbols-rounded">
+										language
+									</span>
+								</a>
+							{% endif %}
+							{% if (project.githubLink) %}
+								<a title="voir le dépot git de  {{ project.name }} " target="_blank" href="{{ project.githubLink}}">
+									<iconify-icon icon="mdi:github" style="color: #fafafa;" width="24" height="24"></iconify-icon>
+								</a>
+							{% endif %}
+						</div>
+
+					</div>
+
+				</div>
+			{% endfor %}
+
+		</section>
+
+		<section class="section" id="contact">
+			<div class="center_h2">
+				<h2>Contact</h2>
+			</div>
+			{{ form_start(contactForm, {'action': path('app_message'), 'attr':{'class':'contact-form', 'autocomplete':'off'}}) }}
+			<div class="field_group">
+				{{ form_widget(contactForm.lastname, {'attr':{'placeholder':'Nom', 'class':"input-text"}}) }}
+				{{ form_widget(contactForm.firstname, {'attr':{'placeholder':'Prénom', 'class':"input-text"}}) }}
+			</div>
+			<div class="field_group">
+				{{ form_widget(contactForm.email, {'attr':{'placeholder':'Email', 'class':"input-text"}}) }}
+				{{ form_widget(contactForm.subject, {'attr':{'placeholder':'Sujet', 'class':"input-text"}}) }}
+			</div>
+			{{ form_widget(contactForm.message, {'attr':{'placeholder':'Votre message...', 'class':"message-area"}}) }}
+			{{ form_widget(contactForm.submit, {'label':'Envoyer', 'attr':{'placeholder':'Envoyer', 'class':"submit"}}) }}
+			{{ form_end(contactForm) }}
+		</section>
+
+	</div>
 {% endblock %}

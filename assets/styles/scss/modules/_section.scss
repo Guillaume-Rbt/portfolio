@@ -13,33 +13,38 @@
 }
 
 .section-image_right {
-    width:300px;
+    width: 300px;
     position: relative;
 
-    &::before, &::after {
+    &::before,
+    &::after {
         content: "";
         background: url('./images/circle.svg');
-        position:absolute;
+        position: absolute;
         background-repeat: no-repeat;
         background-size: 100% 100%;
-        z-index:-1;
+        z-index: -1;
     }
 
     &::before {
-        width:100px;
-        height:100px;
-        right:-30px;
-        top:-30px;
+        width: 100px;
+        height: 100px;
+        right: -30px;
+        top: -30px;
     }
 
     &::after {
-        width:100px;
-        height:100px;
-        left:-30px;
-        bottom:-30px;
+        width: 100px;
+        height: 100px;
+        left: -30px;
+        bottom: -30px;
     }
 
     & img {
-        width:100%;
+        width: 100%;
     }
+}
+
+.section:nth-child(even) {
+    background-color: #131313;
 }

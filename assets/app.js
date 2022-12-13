@@ -11,8 +11,9 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
-import { displayFile } from './displayFile.js'
-import { Parallax } from './parallax.js'
+import { displayFile } from './JS/displayFile'
+import { Parallax } from './JS/parallax'
+import { Observer } from './JS/observer'
 
 // handle registration confirm Password
 if(document.querySelector('#user_confirmPassword')) {
@@ -64,16 +65,53 @@ if(document.querySelector('.header')) {
 
 Parallax.bind()
 
+let observerOptions = {
+    rootMargin: '-10% 0px -35% 0px',
+}
 
-let linkMenu = document.querySelectorAll(".nav-link");
+let elementsObserve = document.querySelectorAll("[data-observer]");
+
+elementsObserve.forEach((element) => {
+    new Observer(element, observerOptions)
+})
+
+
+let linkMenu = document.querySelectorAll("header .nav-link");
 
 linkMenu.forEach((link) => {
     link.addEventListener("click", (e) => {
         e.preventDefault();
        let el =  document.querySelector(link.getAttribute("href"));
-        document.querySelector("body").scroll(0 , el.offsetTop)
+        window.scroll(0 , el.offsetTop - 100)
     })
 })
+
+
+if (document.getElementById("portfolio")) {
+    var closes = document.querySelectorAll(".close");
+
+
+    for (close of closes) {
+        close.addEventListener("click", function (e) {
+
+            e.preventDefault()
+            var scroll = window.scrollY;
+            window.location.href = "/#";
+            window.scrollTo({
+                top: scroll,
+                left: 0,
+            })
+
+        })
+    }
+}
+
+
+
+
+
+
+
 
 
 

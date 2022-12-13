@@ -1,0 +1,24 @@
+*[data-observer=fade-right] {
+    transform: translateX(-50px);
+    opacity: 0;
+    transition:all 1s cubic-bezier(.44,.74,.71,1.08) ;
+}
+
+*[data-observer].fade-right {
+    opacity: 1;
+    transform: translateX(0);
+    //transition:all 1s cubic-bezier(.17,.67,.14,1.16) ;
+}
+
+
+*[data-observer=fade-left] {
+    transform: translateX(50px);
+    opacity: 0;
+    transition:all 1s cubic-bezier(.44,.74,.71,1.08) ;
+}
+
+*[data-observer].fade-left {
+    opacity: 1;
+    transform: translateX(0);
+    //transition:all 1s cubic-bezier(.17,.67,.14,1.16) ;
+}

@@ -1,0 +1,100 @@
+.projects-container {
+    width: clamp(300px, 80%, 1200px);
+    min-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+
+    & .project-item {
+        display: block;
+        width: 300px;
+        position: relative;
+        border-radius: 10px;
+
+        & img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+
+        &:before {
+            content: "En savoir +";
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: $yellow;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: $dark;
+            font-size: 30px;
+        }
+
+        &:hover:before {
+            opacity: 1;
+        }
+    }
+}
+
+.popup {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(185, 185, 185, 0.445);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+
+
+&:target {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+}
+
+.popup .pop_projet {
+    background-color: $dark;
+    padding: 10px;
+    border-radius: 10px;
+    width: clamp(320px, 80%, 1000px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 7px 7px 10px rgb(36, 36, 36);
+
+    & h2 {
+        font-size: 20px;
+        padding: 15px 0;
+        margin-bottom: 15px;
+    }
+    & p {
+        line-height: 1;
+    }
+  }
+
+.popup .pop_projet img {
+    width: 60%;
+    margin: 20px auto;
+    min-width: 260px;
+  }
+
+  .popup .pop_projet .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }

@@ -4,7 +4,7 @@
 $font: Rubik;
 $dark: #171717;
 $white: #fafafa;
-$yellow: #cbce18;
+$yellow: #cacd2c;
 $beforeH2 : 15;
 
 /*******************\
@@ -14,14 +14,13 @@ $beforeH2 : 15;
 @import './scss/base/base';
 
 /*******************\
-    $layout
-\*******************/
-
-@import './scss/layout/section-layout';
-
-/*******************\
     $modules
 \*******************/
 @import './scss/modules/header';
+@import './scss/modules/section';
 @import './scss/modules/banner';
-@import './scss/modules/skills'
+@import './scss/modules/skills';
+@import './scss/modules/fade';
+@import './scss/modules/background-sections';
+@import './scss/modules/contact_form';
+@import './scss/modules/portfolio'

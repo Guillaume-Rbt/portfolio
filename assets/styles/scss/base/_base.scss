@@ -21,11 +21,8 @@ body {
 body {
     color: $white;
     font-family: $font;
-    background-color: $dark;
-    background: radial-gradient(circle at 0% 50%, rgb(76, 76, 76) 0%, $dark 5%, $dark 100%) no-repeat;
-    background-size: 50vw 50vh;
+    background: $dark;
     padding-top: 100px;
-    background-position:  0 50vh;
 }
 
 
@@ -53,6 +50,12 @@ h2 {
         position: absolute;
         bottom:0;
     } 
+}
+
+.center_h2 {
+    width:100%;
+    display: flex;
+    justify-content: center;
 }
 
 p {

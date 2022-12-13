@@ -29,3 +29,10 @@ $yellow: #cbce18;
   .height-container {
     @include height-container();
   }
+
+  .preview {
+    width:300px;
+    & img {
+      width:100%;
+    }
+  }

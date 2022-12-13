@@ -26,8 +26,8 @@
 	{% endif %}
 	{{ form_row(projectForm.description, {"label":"Description"} ) }}
 	{{ form_row(projectForm.technology, {"label":"Technologies utilisées"} ) }}
-	{{ form_row(projectForm.githubLink, {"label":"Lien github"} ) }}
-	{{ form_row(projectForm.siteLink, {"label":"Nom du site"} ) }}
+	{{ form_row(projectForm.githubLink, {"label":"Lien github", 'required':false} ) }}
+	{{ form_row(projectForm.siteLink, {"label":"Lien du site", 'required':false} ) }}
 	{% if editMode %}
 		{{ form_row(projectForm.submit, {"label":"Enregistrer les modifications",'attr':{ 'class':'btn btn-secondary' }}
 		) }}

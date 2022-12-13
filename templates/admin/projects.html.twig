@@ -34,7 +34,7 @@
 							<td>{{ project.name }}</td>
 							<td> <img height="150" src="{{ asset("uploads/images/" ~ project.image) }}"</td>
 							<td>{{ project.description }}</td>
-							<td>{{ project.githubLink }}</td>
+							<td><p>{{ project.githubLink }}<p><p>{{ project.siteLink }}<p></td>
 							<td><a href="{{ path('admin_edit_project' , {'id': project.id }) }}" class="btn btn-warning">Modifier</a>
 							<a href="{{ path('admin_project_remove' , {'id': project.id }) }}" class="btn btn-danger">Supprimer</a>
 							</td>
