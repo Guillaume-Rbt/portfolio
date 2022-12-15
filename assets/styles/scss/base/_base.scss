@@ -61,3 +61,17 @@ h2 {
 p {
     line-height: 1.75;
 }
+
+.btn {
+    display: block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 30px;
+    text-align: center
+}
+
+.btn_yellow {
+    @extend .btn;
+    background-color: $yellow;
+    color:$dark
+}

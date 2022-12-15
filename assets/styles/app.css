@@ -64,6 +64,19 @@ p {
   line-height: 1.75;
 }
 
+.btn, .btn_yellow {
+  display: block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.btn_yellow {
+  background-color: #cacd2c;
+  color: #171717;
+}
+
 /*******************\
     $modules
 \*******************/
@@ -430,7 +443,7 @@ p {
 }
 
 .submit {
-  width: 300px;
+  width: 100%;
   padding: 10px;
   background: #cacd2c;
   border: none;
