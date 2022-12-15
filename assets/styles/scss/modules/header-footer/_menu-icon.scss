@@ -1,0 +1,152 @@
+.icon-menu {
+    height:50px;
+    width:50px;
+    position:relative;
+    cursor: pointer;
+    display: none;
+
+    @media screen and (max-width:910px) {
+        display: block;
+ 
+    }
+}
+
+
+.icon-menu span {
+    display: block;
+    width: 100%;
+    height:6px;
+    background-color: $white;
+    position: absolute;
+    top: calc(50% - 3px);
+    border-radius: 3px;
+    transition: all 0.3s 0.25s ease  ;
+
+    &::before, &::after {
+        content:"";
+        display: block;
+        width: 100%;
+        height:6px;
+        background-color: $white;
+        position: absolute;
+        border-radius: 3px;
+        }
+    &::before {
+        top: -15px;
+        animation: beforeMenuDisabled 1s 0s forwards;
+    }
+
+    &::after {
+        bottom:-15px;
+        animation: afterMenuDisabled 1s 0s forwards;
+    }
+}
+
+
+.icon-menu.active {
+    & span {
+        background-color: #fafafa00;
+    }
+}
+
+.icon-menu.active span::before {
+    animation: beforeMenuActived 1s 0s forwards;
+}
+
+.icon-menu.active span::after {
+    animation: afterMenuActived 1s 0s forwards;
+}
+
+/*******************\
+
+animations menu disable
+
+\*******************/
+
+@keyframes beforeMenuDisabled {
+    0% {
+        top:0px;
+        transform: rotateZ(50deg);
+    }
+    25% {
+        transform: rotateZ(0deg);
+        top:0px;
+    }
+    50% {
+        top:0px;
+    }
+    75% {
+        top:0px
+    }
+
+    100% {
+        top:-15px
+    }
+}
+
+@keyframes afterMenuDisabled {
+    0% {
+        bottom:0px;
+        transform: rotateZ(-50deg);
+    }
+    25% {
+        transform: rotateZ(0deg);
+        bottom:0px;
+    }
+    50% {
+        bottom:0px;
+    }
+    75% {
+        bottom:0px
+    }
+
+    100% {
+        bottom:-15px
+    }
+}
+
+/*******************\
+
+Animations menu actived
+
+\*******************/
+
+@keyframes beforeMenuActived {
+    0% {
+        top:-15px
+    }
+    25% {
+        top:0px
+    }
+    50% {
+        top:0px;
+    }
+    75% {
+        transform: rotateZ(0deg);
+        top:0px;
+    }
+    100% {
+        top:0px;
+        transform: rotateZ(50deg);
+    }
+}
+
+@keyframes afterMenuActived {
+    0% {
+        bottom:-15px
+    }
+    25% {
+        bottom:0px
+    }
+    50% {
+        bottom:0px;
+    }
+    75% {
+        transform: rotateZ(0deg);
+        bottom:0px;
+    }
+    100% {
+        bottom:0px;
+        transform: rotateZ(-50deg);
+    }
+}

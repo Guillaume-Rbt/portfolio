@@ -2,7 +2,7 @@
     background-image:url('./images/circle.svg'), url('./images/circle.svg'), url('./images/circle.svg'), url('./images/circle-dark.svg');
     background-repeat: no-repeat;
     background-size: 101px 101px, 137px 137px, 65px 65px, 60px 60px;
-    background-position: 45vw calc(10vh + 15px + var(--parallaxY)), 85vw calc(45vh + 15px + var(--parallaxY)), 55vw calc(70vh + 15px + var(--parallaxY)), 75vw 50px;
+    background-position: 45vw calc(10vh + 15px + var(--parallaxY)), right 0 top calc(45vh + 15px + var(--parallaxY)), 55vw calc(70vh + 15px + var(--parallaxY)), 75vw 50px;
     height: calc(100vh - 100px) !important;
     display: flex;
     gap: 50px;

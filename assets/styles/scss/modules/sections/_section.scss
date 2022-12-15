@@ -1,3 +1,6 @@
+/*******************\
+    $section
+\*******************/
 .section {
     padding: 100px 10px;
     display: flex;
@@ -12,7 +15,11 @@
     width: clamp(300px, 70%, 500px)
 }
 
-.section-image_right {
+.section-image {
+    width: 300px;
+}
+
+.section-image_circles {
     width: 300px;
     position: relative;
 
@@ -24,18 +31,16 @@
         background-repeat: no-repeat;
         background-size: 100% 100%;
         z-index: -1;
+        width: 100px;
+        height: 100px;
     }
 
     &::before {
-        width: 100px;
-        height: 100px;
         right: -30px;
         top: -30px;
     }
 
     &::after {
-        width: 100px;
-        height: 100px;
         left: -30px;
         bottom: -30px;
     }
@@ -43,8 +48,17 @@
     & img {
         width: 100%;
     }
+
+    @media screen and(max-width:366px) {
+        &::after{
+            left: 0px;
+            bottom: -40px;
+                }
+        &::before {
+            right: 0px;
+            top: -40px;
+                }
+        
+    }
 }
 
-.section:nth-child(even) {
-    background-color: #131313;
-}

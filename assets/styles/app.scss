@@ -16,11 +16,16 @@ $beforeH2 : 15;
 /*******************\
     $modules
 \*******************/
-@import './scss/modules/header';
-@import './scss/modules/section';
-@import './scss/modules/banner';
-@import './scss/modules/skills';
-@import './scss/modules/fade';
-@import './scss/modules/background-sections';
-@import './scss/modules/contact_form';
-@import './scss/modules/portfolio'
+@import './scss/modules/header-footer/header';
+@import './scss/modules/sections/section';
+@import './scss/modules/sections/banner';
+@import './scss/modules/sections/skills_defil';
+@import './scss/modules/animed/fade';
+@import './scss/modules/sections/background-sections';
+@import './scss/modules/sections/contact_form';
+@import './scss/modules/sections/portfolio';
+@import './scss/modules/header-footer/footer';
+@import './scss/modules/legal-notice';
+@import './scss/modules/animed/flashes_messages';
+@import './scss/modules/header-footer/menu-icon';
+@import './scss/modules//sections/skills';

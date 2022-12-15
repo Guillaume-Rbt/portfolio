@@ -2,10 +2,13 @@
 <a class="logo-link" href="/" title="Accueil du site"> <img src="{{ asset('/assets/logo/logo_white.svg') }}" alt="logo Guillaume Robert"> </a>
 <nav class="navbar">
 <ul class="navbar-nav">
-<li class="nav-items"><a href="#about" class="nav-link">À propos</a></li>
-<li class="nav-items"><a href="#skills" class="nav-link">Compétences</a></li>
-<li class="nav-items"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-<li class="nav-items"><a href="#contact" class="nav-link">Contact</a></li>
+<li class="nav-items"><a href="{{ path('app_front')}}#about" class="nav-link">À propos</a></li>
+<li class="nav-items"><a href="{{ path('app_front')}}#skills" class="nav-link">Compétences</a></li>
+<li class="nav-items"><a href="{{ path('app_front')}}#portfolio" class="nav-link">Portfolio</a></li>
+<li class="nav-items"><a href="{{ path('app_front')}}#contact" class="nav-link">Contact</a></li>
 </ul>
 </nav>
+<div class="icon-menu">
+        <span></span>
+    </div>
 </header>

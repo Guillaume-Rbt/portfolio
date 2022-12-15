@@ -1,0 +1,16 @@
+@media screen and (max-width:869px) {
+    .skills {
+        & .section-image {
+            order: 2; 
+        }
+
+        & .section-text {
+            order: 1; 
+        }
+
+        & .skills-container {
+            order:3
+        }
+    }
+    
+}

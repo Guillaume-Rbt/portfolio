@@ -21,6 +21,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "ckeditor4": "^4.13.0"
+        "ckeditor4": "^4.13.0",
+        "tarteaucitronjs": "^1.9.9"
     }
 }

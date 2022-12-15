@@ -5,6 +5,17 @@
 {% block body %}
 	{% include "partials/header.html.twig" %}
 
+	{% for message in app.flashes('mailSuccess') %}
+		<div class="success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('mailError') %}
+		<div class="error">
+			{{ message }}
+		</div>
+	{% endfor %}
+
 	<div class="site-content">
 
 		<section data-parallax='{"y":-0.5, "variable":true}' class="banner">
@@ -28,13 +39,13 @@
 					ans.</span>
 				{{ infos.description | raw }}
 			</div>
-			<div data-parallax='{"y":-0.5 , "r":0.02}' class="section-image_right">
+			<div data-observer="fade-left" class="section-image_circles">
 				<img src="{{ asset('uploads/images/' ~ infos.photo) }}" alt="photo Guillaume">
 			</div>
 		</section>
 
-		<section id="skills" class="section skills">
-			<img class='section-image_right' src="{{ asset('assets/img/skills.svg') }}" alt="">
+		<section data-parallax='{"y":-0.5 , "variable":true}' id="skills" class="section skills">
+			<img data-observer="fade-right" class='section-image' src="{{ asset('assets/img/skills.svg') }}" alt="">
 			<div data-observer="fade-left" class="section-text">
 				<h2>Mes compétences</h2>
 				<p>Je suis capable de créer et d'intégrer les maquettes de sites web en assurant le responsive design afin que l'interface soit adaptée à tous les supports de navigation internet en utilisant les technologies et les outils adéquats.</p>
@@ -182,7 +193,7 @@
 			</div>
 		</section>
 
-		<section id="portfolio" class="section">
+		<section data-parallax='{"y":0.3 , "variable":true}' id="portfolio" class="section portfolio">
 			<div class="center_h2">
 				<h2>Portfolio</h2>
 			</div>
@@ -211,7 +222,7 @@
 								</span>
 							</div>
 						</a>
-						<div>
+						<div class="project-link">
 							{% if (project.siteLink) %}
 								<a title="Voir le projet {{ project.name }} " href="{{project.siteLink}}" target="_blank">
 									<span class="material-symbols-rounded">
@@ -233,7 +244,7 @@
 
 		</section>
 
-		<section class="section" id="contact">
+		<section data-parallax='{"y":0.2, "variable":true}' class="section contact" id="contact">
 			<div class="center_h2">
 				<h2>Contact</h2>
 			</div>
@@ -248,8 +259,22 @@
 			</div>
 			{{ form_widget(contactForm.message, {'attr':{'placeholder':'Votre message...', 'class':"message-area"}}) }}
 			{{ form_widget(contactForm.submit, {'label':'Envoyer', 'attr':{'placeholder':'Envoyer', 'class':"submit"}}) }}
+			{{ form_widget(contactForm.recaptchaResponse) }}
 			{{ form_end(contactForm) }}
-		</section>
 
+			<script src="https://www.google.com/recaptcha/api.js?render=6LfodQgjAAAAABNHY0EEmJizDr3gaJoaS3zXnf2y"></script>
+
+			<script>
+
+				grecaptcha.ready(function () {
+					grecaptcha.execute('6LfodQgjAAAAABNHY0EEmJizDr3gaJoaS3zXnf2y', {action: 'submit'}).then(function (token) {
+document.getElementById("contact_recaptchaResponse").value = token
+});
+});
+			</script>
+		</section>
 	</div>
+
+
+	{% include "partials/footer.html.twig" %}
 {% endblock %}
