@@ -1,6 +1,8 @@
+$WidthBackground : clamp(100px, 50%, 350px);
+
 .about {
     background: url('./images/circles3x4-dark171717.svg');
-    background-size: auto 40% ;
+    background-size: $WidthBackground auto ;
     background-repeat: repeat-y;
     background-attachment: fixed;
     background-color: #131313;
@@ -8,7 +10,7 @@
 
 .skills {
     background: url('./images/circles3x4-dark131313.svg');
-    background-size: auto 40% ;
+    background-size: $WidthBackground auto ;
     background-repeat: repeat-y;
     background-color: $dark;
     background-position: right 0px  bottom calc(-0.5 * var(--parallaxY));
@@ -18,10 +20,10 @@
 
 .portfolio 
 {
-    background: url('./images/circle.svg'), url('./images/circle-dark.svg'), url('./images/circles3x4-dark171717.svg'), url('./images/circle.svg'), url('./images/circle.svg');
-    background-size: 50px auto, 100px auto, auto clamp(100px, 50%, 200px), 40px auto, 50px auto;
-    background-repeat: no-repeat, no-repeat, repeat-y, no-repeat, no-repeat;
-    background-position: 70% calc(35% + var(--parallaxY)), right 10px  top calc(40% + 2 * var(--parallaxY)), left 0 bottom calc(-0.5 * var(--parallaxY)), 70% 10px, clamp(100px, 50%, 200px) calc(30% + 1.5 * var(--parallaxY));
+    background:url('./images/circle.svg'), url('./images/circle-dark.svg'), url('./images/circle.svg'), url('./images/circle.svg'), url('./images/circles3x4-dark171717.svg');
+    background-size: 50px auto, 100px auto, 40px auto, 50px auto, $WidthBackground auto,;
+    background-repeat:no-repeat, no-repeat, no-repeat, no-repeat, repeat-y ;
+    background-position:  70% calc(35% + var(--parallaxY)), right 10px  top calc(40% + 2 * var(--parallaxY)), 70% 10px, clamp(100px, 50%, 200px) calc(30% + 1.5 * var(--parallaxY)), left 0 bottom calc(-0.5 * var(--parallaxY));
     background-color: #131313;
     background-attachment: fixed;
 
@@ -29,17 +31,17 @@
 
 .contact {
     background-color: $dark;
-    background-image:url('./images/circle.svg'),url('./images/circle.svg'), url('./images/circles3x4-dark131313.svg'), url('./images/circle-dark.svg'), url('./images/circle-dark.svg') ;
-    background-repeat: no-repeat, no-repeat, repeat-y;
-    background-size: 50px 50px, 50px 50px, auto clamp(100px, 50%, 200px), 200px auto, 200px auto;
-    background-position: 5vw calc(20% + 2 * var(--parallaxY)), bottom 10px right 50%, right bottom calc(-0.5 * var(--parallaxY)), left 50px bottom 35%, right clamp(100px, 50%, 200px) top calc(35% + 2 * var(--parallaxY))  ;
+    background-image:url('./images/circle.svg'),url('./images/circle.svg'), url('./images/circle-dark.svg'), url('./images/circle-dark.svg'), url('./images/circles3x4-dark131313.svg') ;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-y;
+    background-size: 50px 50px, 50px 50px, 150px auto, 150px auto, $WidthBackground auto;
+    background-position: 5vw calc(20% + 2 * var(--parallaxY)), bottom 10px right 50%, left 50px bottom 35%, right calc($WidthBackground + 20px) top calc(35% + 2 * var(--parallaxY)), right 0 bottom calc(-0.5 * var(--parallaxY))  ;
     background-attachment: scroll, scroll, fixed;
 
     @media  screen and (max-width:500px) {
-        background-image:url('./images/circle.svg'),url('./images/circle.svg'), url('./images/circles3x4-dark131313.svg'), url('./images/circle-dark.svg') ;
-        background-repeat: no-repeat, no-repeat, repeat-y;
-        background-size: 50px 50px, 50px 50px, auto clamp(100px, 50%, 200px), 200px auto;
-        background-position: 5vw 15vh, bottom 10px right 50%, right bottom calc(-0.5 * var(--parallaxY)), left 50px bottom 50% ;
+        background-image:url('./images/circle.svg'),url('./images/circle.svg'), url('./images/circle-dark.svg'), url('./images/circles3x4-dark131313.svg') ;
+        background-repeat: no-repeat, no-repeat, no-repeat, repeat-y;
+        background-size: 50px 50px, 50px 50px, 200px auto, $WidthBackground auto;
+        background-position: 5vw calc(15% + 2 * var(--parallaxY)), bottom 10px right 50%, left 50px bottom 50%, right bottom calc(-0.5 * var(--parallaxY)) ;
         background-attachment: scroll, scroll, fixed;
     
     }
