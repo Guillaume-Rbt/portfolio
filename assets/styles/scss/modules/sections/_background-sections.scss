@@ -6,6 +6,7 @@ $WidthBackground : clamp(100px, 50%, 350px);
     background-repeat: repeat-y;
     background-attachment: fixed;
     background-color: #131313;
+    background-position: left 0 bottom calc(-0.5 * var(--parallaxY));
 }
 
 .skills {

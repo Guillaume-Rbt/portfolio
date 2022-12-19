@@ -363,6 +363,7 @@ p {
   background-repeat: repeat-y;
   background-attachment: fixed;
   background-color: #131313;
+  background-position: left 0 bottom calc(-0.5 * var(--parallaxY));
 }
 
 .skills {
