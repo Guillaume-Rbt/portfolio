@@ -137,6 +137,29 @@ if (document.getElementsByClassName('with-menu')) {
     }
 }
 
+let sections = document.querySelectorAll(".section");
+let navLinks = document.querySelectorAll(".nav-link");
+let banner = document.querySelector('.banner');
+
+let observer = new IntersectionObserver(intersectingSection, {"rootMargin" : "-35% 0px -35% 0px"});
+observer.observe(banner);
+
+sections.forEach((section) => {
+    let observer = new IntersectionObserver(intersectingSection, {"rootMargin": "-35% 0px -35% 0px"});
+    observer.observe(section)
+})
+
+
+function intersectingSection (entries) {
+    entries.forEach((entry) => {
+        if(entry.isIntersecting) {
+         navLinks.forEach((navLink) => {navLink.classList.remove("active")});
+         if(entry.target.getAttribute('id')) {
+            document.querySelector("[href='/#" + entry.target.getAttribute('id')+ "']").classList.add("active")
+        }
+        }
+    })
+}
 
 
 
