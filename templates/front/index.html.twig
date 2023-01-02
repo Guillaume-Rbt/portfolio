@@ -51,7 +51,8 @@
 				<p>Je suis capable de créer et d'intégrer les maquettes de sites web en assurant le responsive design afin que l'interface soit adaptée à tous les supports de navigation internet en utilisant les technologies et les outils adéquats.</p>
 				<p>J'assure également l'adaptation et la création des éléments visuels qui composent le site (logos, vidéos, images, illustrations) afin qu'ils s'insèrent au mieux dans le style graphique général. J'ai également la possibilité d'effectuer le traitement sonore des vidéos et autres médias audio en cas de besoin grâce à mon savoir faire acquis avec mon activité musicale.
 				</p>
-				<a class="btn_yellow" href='{{ asset('uploads/files/' ~ infos.CV ) }}'>Télécharger mon CV </a>
+				<a class="btn_yellow" href='{{ asset('uploads/files/' ~ infos.CV ) }}'>Télécharger mon CV
+				</a>
 			</div>
 			<div class="skills-container">
 
@@ -169,6 +170,8 @@
 						<p>CSS</p>
 						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Webpack</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>React</p>
 					</div>
 					<div class="skills-row_group">
 						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
@@ -179,6 +182,8 @@
 						<p>CSS</p>
 						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Webpack</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>React</p>
 					</div>
 					<div class="skills-row_group">
 						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
@@ -189,6 +194,8 @@
 						<p>CSS</p>
 						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
 						<p>Webpack</p>
+						<img class="img" src="{{ asset('assets/img/circle.svg') }}" alt="">
+						<p>React</p>
 					</div>
 				</div>
 			</div>
@@ -268,7 +275,7 @@
 			<script>
 
 				grecaptcha.ready(function () {
-					grecaptcha.execute('6LfodQgjAAAAABNHY0EEmJizDr3gaJoaS3zXnf2y', {action: 'submit'}).then(function (token) {
+grecaptcha.execute('6LfodQgjAAAAABNHY0EEmJizDr3gaJoaS3zXnf2y', {action: 'submit'}).then(function (token) {
 document.getElementById("contact_recaptchaResponse").value = token
 });
 });
