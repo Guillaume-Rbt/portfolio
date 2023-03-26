@@ -25,7 +25,7 @@ body {
 
 body {
   color: #fafafa;
-  font-family: Rubik;
+  font-family: Rubik, sans-serif;
   background: #171717;
   padding-top: 100px;
 }
@@ -38,7 +38,6 @@ a {
 h2 {
   padding: 0 0 20px 0;
   position: relative;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   margin-bottom: 20px;
@@ -295,7 +294,6 @@ p {
 }
 .skills-container .skills-row .skills-row_group p {
   white-space: nowrap;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   font-size: clamp(30px, 10vw, 64px);
@@ -305,8 +303,7 @@ p {
 
 .skills-container .skills-row:nth-child(1) .skills-row_group,
 .skills-container .skills-row:nth-child(3) .skills-row_group {
-  -webkit-animation: defilLeft 45s linear infinite;
-          animation: defilLeft 45s linear infinite;
+  animation: defilLeft 45s linear infinite;
 }
 
 .skills-container .skills-row:nth-child(2),
@@ -315,22 +312,12 @@ p {
 }
 .skills-container .skills-row:nth-child(2) .skills-row_group,
 .skills-container .skills-row:nth-child(4) .skills-row_group {
-  -webkit-animation: defilRight 45s linear infinite;
-          animation: defilRight 45s linear infinite;
+  animation: defilRight 45s linear infinite;
 }
 
 .skills-row_group img {
   height: 30px;
   aspect-ratio: 1/1;
-}
-
-@-webkit-keyframes defilLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
 }
 
 @keyframes defilLeft {
@@ -339,14 +326,6 @@ p {
   }
   100% {
     transform: translateX(-100%);
-  }
-}
-@-webkit-keyframes defilRight {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(100%);
   }
 }
 @keyframes defilRight {
@@ -432,7 +411,7 @@ p {
 }
 
 .input-text, .message-area, .submit {
-  font-family: Rubik;
+  font-family: Rubik, sans-serif;
   font-size: 16px;
 }
 
@@ -615,8 +594,7 @@ p {
   top: 100px;
   right: 5px;
   z-index: 800;
-  -webkit-animation: animMessage 4s linear forwards;
-          animation: animMessage 4s linear forwards;
+  animation: animMessage 4s linear forwards;
 }
 
 .error {
@@ -628,20 +606,7 @@ p {
   top: 100px;
   right: 5px;
   z-index: 800;
-  -webkit-animation: animMessage 4s linear forwards;
-          animation: animMessage 4s linear forwards;
-}
-
-@-webkit-keyframes animMessage {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  animation: animMessage 4s linear forwards;
 }
 
 @keyframes animMessage {
@@ -689,13 +654,11 @@ p {
 }
 .icon-menu span::before {
   top: -15px;
-  -webkit-animation: beforeMenuDisabled 1s 0s forwards;
-          animation: beforeMenuDisabled 1s 0s forwards;
+  animation: beforeMenuDisabled 1s 0s forwards;
 }
 .icon-menu span::after {
   bottom: -15px;
-  -webkit-animation: afterMenuDisabled 1s 0s forwards;
-          animation: afterMenuDisabled 1s 0s forwards;
+  animation: afterMenuDisabled 1s 0s forwards;
 }
 
 .icon-menu.active span {
@@ -703,13 +666,11 @@ p {
 }
 
 .icon-menu.active span::before {
-  -webkit-animation: beforeMenuActived 1s 0s forwards;
-          animation: beforeMenuActived 1s 0s forwards;
+  animation: beforeMenuActived 1s 0s forwards;
 }
 
 .icon-menu.active span::after {
-  -webkit-animation: afterMenuActived 1s 0s forwards;
-          animation: afterMenuActived 1s 0s forwards;
+  animation: afterMenuActived 1s 0s forwards;
 }
 
 /*******************\
@@ -717,25 +678,6 @@ p {
 animations menu disable
 
 \*******************/
-@-webkit-keyframes beforeMenuDisabled {
-  0% {
-    top: 0px;
-    transform: rotateZ(50deg);
-  }
-  25% {
-    transform: rotateZ(0deg);
-    top: 0px;
-  }
-  50% {
-    top: 0px;
-  }
-  75% {
-    top: 0px;
-  }
-  100% {
-    top: -15px;
-  }
-}
 @keyframes beforeMenuDisabled {
   0% {
     top: 0px;
@@ -753,25 +695,6 @@ animations menu disable
   }
   100% {
     top: -15px;
-  }
-}
-@-webkit-keyframes afterMenuDisabled {
-  0% {
-    bottom: 0px;
-    transform: rotateZ(-50deg);
-  }
-  25% {
-    transform: rotateZ(0deg);
-    bottom: 0px;
-  }
-  50% {
-    bottom: 0px;
-  }
-  75% {
-    bottom: 0px;
-  }
-  100% {
-    bottom: -15px;
   }
 }
 @keyframes afterMenuDisabled {
@@ -798,25 +721,6 @@ animations menu disable
 Animations menu actived
 
 \*******************/
-@-webkit-keyframes beforeMenuActived {
-  0% {
-    top: -15px;
-  }
-  25% {
-    top: 0px;
-  }
-  50% {
-    top: 0px;
-  }
-  75% {
-    transform: rotateZ(0deg);
-    top: 0px;
-  }
-  100% {
-    top: 0px;
-    transform: rotateZ(50deg);
-  }
-}
 @keyframes beforeMenuActived {
   0% {
     top: -15px;
@@ -834,25 +738,6 @@ Animations menu actived
   100% {
     top: 0px;
     transform: rotateZ(50deg);
-  }
-}
-@-webkit-keyframes afterMenuActived {
-  0% {
-    bottom: -15px;
-  }
-  25% {
-    bottom: 0px;
-  }
-  50% {
-    bottom: 0px;
-  }
-  75% {
-    transform: rotateZ(0deg);
-    bottom: 0px;
-  }
-  100% {
-    bottom: 0px;
-    transform: rotateZ(-50deg);
   }
 }
 @keyframes afterMenuActived {
