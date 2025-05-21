@@ -14,13 +14,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin', 'admin_')]
 class AdminController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function homeAdmin () : Response
+    public function homeAdmin(): Response
     {
         return $this->render('admin/index.html.twig');
     }
@@ -38,7 +37,7 @@ class AdminController extends AbstractController
 
     #[Route('/project/new', name: 'add_project')]
     #[Route('/project/{id}/edit', name: 'edit_project')]
-    public function project(Project $project = null,  Request $request, EntityManagerInterface $manager, SluggerInterface $slugger)
+    public function project(Project $project,  Request $request, EntityManagerInterface $manager, UploadService $uploader)
     {
         $editMode = true;
         if (!$project) {
@@ -58,8 +57,7 @@ class AdminController extends AbstractController
                 $image = $form->get('image')->getData();
 
                 if (in_array($image->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
-                    $uploader = new UploadService($slugger, $this->getParameter('images_directory'));
-                    $imageName = $uploader->upload($image);
+                    $imageName = $uploader->uploadImage($image);
                     $project->setImage($imageName);
                 }
             }
@@ -86,9 +84,12 @@ class AdminController extends AbstractController
 
     #[Route('/infos/new', name: 'infos_add')]
     #[Route('/infos/{id}/edit', name: 'infos_edit')]
-    public function infos(Infos $infos = null, EntityManagerInterface $manager, InfosRepository $repo, Request $request, SluggerInterface $slugger)
+    public function infos(Infos $infos, EntityManagerInterface $manager, InfosRepository $repo, Request $request, UploadService $uploader)
     {
-        if (!$infos) {
+
+
+
+        if (!$infos->getId()) {
             if ($repo->findAll() === []) {
                 $infos = new infos();
             } else {
@@ -107,8 +108,7 @@ class AdminController extends AbstractController
                     unlink($this->getParameter('images_directory') .  '/' . $infos->getPhoto());
                     $photo = $form->get('photo')->getData();
                     if (in_array($photo->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
-                        $uploader = new UploadService($slugger, $this->getParameter('images_directory'));
-                        $photoName = $uploader->upload($photo);
+                        $photoName = $uploader->uploadImage($photo);
                         $infos->setPhoto($photoName);
                     } else {
                         $this->addFlash('error', 'Format de photo png et jpeg uniquement');
@@ -121,18 +121,16 @@ class AdminController extends AbstractController
                     unlink($this->getParameter('files_directory') .  '/' . $infos->getCV());
                     $cv = $form->get('cv')->getData();
 
-                if (in_array($cv->guessExtension(), ["pdf", "PDF"])) {
-                    $uploader = new UploadService($slugger, $this->getParameter('files_directory'));
-                    $cvName = $uploader->upload($cv);
-                    $infos->setCV($cvName);
-                } else {
-                    $this->addFlash('error', 'Format de CV pdf uniquement');
-                    return $this->redirectToRoute('admin_infos_edit', [
-                        'id' => 1
-                    ]);
+                    if (in_array($cv->guessExtension(), ["pdf", "PDF"])) {
+                        $cvName = $uploader->uploadDocument($cv);
+                        $infos->setCV($cvName);
+                    } else {
+                        $this->addFlash('error', 'Format de CV pdf uniquement');
+                        return $this->redirectToRoute('admin_infos_edit', [
+                            'id' => 1
+                        ]);
+                    }
                 }
-                }
-                
             }
 
             $manager->persist($infos);

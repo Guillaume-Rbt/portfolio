@@ -4,29 +4,38 @@ namespace App\Service;
 
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class UploadService  {
+class UploadService
+{
 
-    private $targetDirectory;
-    private $slugger; 
+    private $imagesDirectory;
+    private $filesDirectory;
+    private $slugger;
 
-    public function __construct(SluggerInterface $slugger, $targetDirectory) {
+    public function __construct(SluggerInterface $slugger, String $imagesDirectory, String $filesDirectory)
+    {
         $this->slugger = $slugger;
-        $this->targetDirectory = $targetDirectory;
+        $this->imagesDirectory = $imagesDirectory;
+        $this->filesDirectory = $filesDirectory;
     }
 
-    public function upload($file): string
+    public function uploadImage($file): string
     {
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 
-        $safeName = $this->slugger->slug($originalFilename).  '-' . uniqid() . '.' . $file->guessExtension();
-        $file->move($this->getTargetDirectory(), $safeName);
+        $safeName = $this->slugger->slug($originalFilename) .  '-' . uniqid() . '.' . $file->guessExtension();
+        $file->move($this->imagesDirectory, $safeName);
 
         return $safeName;
     }
 
-    public function getTargetDirectory() : string
+
+    public function uploadDocument($file): string
     {
-        return $this->targetDirectory;
+        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+
+        $safeName = $this->slugger->slug($originalFilename) .  '-' . uniqid() . '.' . $file->guessExtension();
+        $file->move($this->filesDirectory, $safeName);
+
+        return $safeName;
     }
 }
-
